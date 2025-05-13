@@ -4,15 +4,18 @@ import MovieCard from "./MovieCard";
 export default function MoviesFilter() {
     const [films, setFilms] = useState([]); // State to store fetched films
 
+    const fetchFilms = async () => {
+        try {
+            const response = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=e8c2e0cec179f15c034b52f686d8ce61");
+            const data = await response.json();
+            setFilms(data.results); // Store the fetched films in state
+        } catch (error) {
+            console.error("Error fetching films:", error);
+        }
+    }
+
     // Fetching data from the API - popularFilms
-    useEffect(() => {
-        fetch("https://api.themoviedb.org/3/movie/popular?api_key=e8c2e0cec179f15c034b52f686d8ce61")
-            .then((response) => response.json())
-            .then((data) => {
-                setFilms(data.results); // Store the fetched films in state
-            })
-            .catch((error) => console.error("Error fetching films:", error));
-    }, []);
+    useEffect(() => {fetchFilms();}, []);
 
     return (
         <section>
