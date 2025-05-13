@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'JosefinSans';
+  font-style: normal;
+  src: url('src/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+}
