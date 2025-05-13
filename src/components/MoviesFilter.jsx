@@ -1,6 +1,19 @@
+import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 
 export default function MoviesFilter() {
+    const [films, setFilms] = useState([]); // State to store fetched films
+
+    // Fetching data from the API - popularFilms
+    useEffect(() => {
+        fetch("https://api.themoviedb.org/3/movie/popular?api_key=e8c2e0cec179f15c034b52f686d8ce61")
+            .then((response) => response.json())
+            .then((data) => {
+                setFilms(data.results); // Store the fetched films in state
+            })
+            .catch((error) => console.error("Error fetching films:", error));
+    }, []);
+
     return (
         <section>
             <div className="flex justify-center items-center flex-col font-josefin gap-2 p-4">
@@ -25,7 +38,9 @@ export default function MoviesFilter() {
                 </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-                <MovieCard />
+                {films.map((film) => (
+                    <MovieCard key={film.id} film={film} />
+                ))}
             </div>
         </section>
     );
