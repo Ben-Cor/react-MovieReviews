@@ -56,9 +56,9 @@ export default function MoviesFilter() {
                 </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 mb-14">
-                {films.map((film) => (
+                {films.length > 0 ? (films.map((film) => (
                     <MovieCard key={film.id} film={film} />
-                ))}
+                ))): (<p className="font-josefin text-xl"> No Movies Found </p>)}
             </div>
         </section>
     );
