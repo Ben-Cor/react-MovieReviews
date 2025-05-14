@@ -38,9 +38,9 @@ export default function MoviesFilter() {
                 <h2 className="text-2xl">Popular</h2>
                 <div className="flex items-center gap-8">
                     <ul className="flex space-x-4">
-                        <li className="cursor-pointer" onClick={() => handleClickRating(8)}>8+</li>
-                        <li className="cursor-pointer" onClick={() => handleClickRating(7)}>7+</li>
-                        <li className="cursor-pointer" onClick={() => handleClickRating(6)}>6+</li>
+                        <li className={`cursor-pointer ${rating === 8 ? "underline decoration-solid" : "" }`} onClick={() => handleClickRating(8)}>8+</li>
+                        <li className={`cursor-pointer ${rating === 7 ? "underline decoration-solid" : "" }`} onClick={() => handleClickRating(7)}>7+</li>
+                        <li className={`cursor-pointer ${rating === 6 ? "underline decoration-solid" : "" }`} onClick={() => handleClickRating(6)}>6+</li>
                     </ul>
                     <div className="flex gap-8">
                         <select className="border-[1px] rounded-sm p-2" name="filter" id="filter">
