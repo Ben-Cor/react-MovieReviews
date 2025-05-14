@@ -1,4 +1,5 @@
-import starIcon from "../assets/star-outline.svg";
+import starIcon from "../assets/whitestar.png";
+import PropTypes from "prop-types";
 
 export default function MovieCard({ film }) {
     return (
@@ -15,9 +16,9 @@ export default function MovieCard({ film }) {
                 <h3 className="text-2xl">{film.title}</h3>
                 <div className="flex flex-col justify-center items-center gap-2">
                     <p>{film.release_date}</p>
-                    <p className="flex gap-[2px]">
+                    <p className="flex justify-center items-center gap-[2px]">
                         {film.vote_average}{" "}
-                        <img className="w-[15px]" src={starIcon} alt="Star" />
+                        <img className="w-[25px] mb-2" src={starIcon} alt="Star" />
                     </p>
                 </div>
                 <p>{film.genre_ids.join(", ")}</p>
@@ -25,3 +26,13 @@ export default function MovieCard({ film }) {
         </a>
     );
 }
+
+MovieCard.propTypes = {
+    film: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        release_date: PropTypes.string.isRequired,
+        vote_average: PropTypes.number.isRequired,
+        genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
+        poster_path: PropTypes.string.isRequired,
+    }).isRequired,
+};
