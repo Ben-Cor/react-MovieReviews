@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
+import MovieRatingFilter from "./MovieRatingFilter";
 
-export default function MoviesFilter() {
+export default function Movies() {
     const [films, setFilms] = useState([]); // State to store fetched films
     const [rating, setRating] = useState(0); // State to store the selected rating
     const [filteredFilms , setFilteredFilms] = useState([]); // State to store filtered films
@@ -37,11 +38,7 @@ export default function MoviesFilter() {
             <div className="flex justify-center items-center flex-col font-josefin gap-2 p-4">
                 <h2 className="text-2xl">Popular</h2>
                 <div className="flex items-center gap-8">
-                    <ul className="flex space-x-4">
-                        <li className={`cursor-pointer ${rating === 8 ? "underline decoration-solid" : "" }`} onClick={() => handleClickRating(8)}>8+</li>
-                        <li className={`cursor-pointer ${rating === 7 ? "underline decoration-solid" : "" }`} onClick={() => handleClickRating(7)}>7+</li>
-                        <li className={`cursor-pointer ${rating === 6 ? "underline decoration-solid" : "" }`} onClick={() => handleClickRating(6)}>6+</li>
-                    </ul>
+                    <MovieRatingFilter rating={rating} handleClickRating={handleClickRating} />
                     <div className="flex gap-8">
                         <select className="border-[1px] rounded-sm p-2" name="filter" id="filter">
                             <option value="">Sort By</option>

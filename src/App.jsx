@@ -1,6 +1,6 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
-import MoviesFilter from './components/MoviesFilter'
+import Movies from './components/Movies'
 
 export default function App() {
 
@@ -8,7 +8,7 @@ export default function App() {
     <>
       <Header />
       <main>
-        <MoviesFilter />
+        <Movies />
       </main>
       <Footer />
     </>
