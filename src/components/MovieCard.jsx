@@ -5,7 +5,8 @@ export default function MovieCard({ film }) {
     return (
         <a
             className="font-josefin bg-gray-800 text-white shadow-md rounded-lg flex flex-col justify-center items-center p-4 border-2"
-            href="#"
+            href={`https://www.themoviedb.org/movie/${film.id}`}
+            target="blank"
         >
             <img
                 className="border-[1px] border-white"
